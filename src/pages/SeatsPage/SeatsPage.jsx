@@ -5,7 +5,7 @@ import styled from "styled-components"
 import selecionar from "../../components/selecionar";
 import sessaoObjeto from "../../components/sessaoObjeto";
 
-export default function SeatsPage() {
+export default function SeatsPage({success, setSuccess}) {
 
     const parameter = useParams();
     const navigate = useNavigate();
@@ -34,13 +34,16 @@ export default function SeatsPage() {
             name: name,
             cpf: cpf
         })
-        promise.then(() => navigate("/sucesso", {
+        let aux = {...success}
+        aux = {
             movie:sessao.movie.title,
             date:sessao.day.date + " - " + sessao.name,
             selecionados: nameSelecionados,
             name: name,
             cpf: cpf
-        }))
+        }
+        setSuccess(aux)
+        promise.then(() => navigate("/sucesso"))
     }
 
     return (

@@ -5,19 +5,21 @@ import SessionsPage from "./pages/SessionsPage/SessionsPage"
 import SuccessPage from "./pages/SuccessPage/SuccessPage"
 import axios from "axios"
 import {BrowserRouter, Routes, Route} from 'react-router-dom'
+import { useState } from "react"
 
 export default function App() {
 
     axios.defaults.headers.common['Authorization'] = 'h09yBzFmu9OGqCCekSH6B0Cn';
+    const [success, setSuccess] = useState({})
 
     return (
         <BrowserRouter>
            <NavContainer>CINEFLEX</NavContainer>
             <Routes>
                 <Route path="/" element={<HomePage />} />
-                <Route path="/assentos/:idSessao" element={<SeatsPage />} />
+                <Route path="/assentos/:idSessao" element={<SeatsPage success={success} setSuccess={setSuccess} />} />
                 <Route path="/sessoes/:idFilme" element={<SessionsPage />} />
-                <Route path="/sucesso" element={<SuccessPage />} />
+                <Route path="/sucesso" element={<SuccessPage success={success} />} />
             </Routes>
         </BrowserRouter>
     )

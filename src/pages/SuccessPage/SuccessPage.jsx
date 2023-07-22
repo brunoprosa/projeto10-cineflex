@@ -1,31 +1,34 @@
 import styled from "styled-components"
+import { Link } from "react-router-dom"
 
-export default function SuccessPage({movie, date, selecionados, name, cpf}) {
-    console.log(selecionados);
+export default function SuccessPage({success}) {
+    console.log(success);
     return (
         <PageContainer>
             <h1>Pedido feito <br /> com sucesso!</h1>
 
             <TextContainer>
                 <strong><p>Filme e sessão</p></strong>
-                <p>{movie}</p>
-                <p>{date}</p>
+                <p>{success.movie}</p>
+                <p>{success.date}</p>
             </TextContainer>
 
             <TextContainer>
                 <strong><p>Ingressos</p></strong>
-                {selecionados.map(s =>
+                {success.selecionados.map(s =>
                     <p>Assento {s}</p>
                 )}
             </TextContainer>
 
             <TextContainer>
                 <strong><p>Comprador</p></strong>
-                <p>Nome: {name}</p>
-                <p>CPF: {cpf}</p>
+                <p>Nome: {success.name}</p>
+                <p>CPF: {success.cpf}</p>
             </TextContainer>
 
-            <button>Voltar para Home</button>
+            <Link to='/'>
+                <button>Voltar para Home</button>
+            </Link>
         </PageContainer>
     )
 }
@@ -45,6 +48,13 @@ const PageContainer = styled.div`
     }
     button {
         margin-top: 50px;
+        align-self: center;
+        border-radius: 3px;
+        border: none;
+        background-color: #E8833A;
+        color: white;
+        width: 175px;
+        height: 37px;
     }
     h1 {
         font-family: 'Roboto';
