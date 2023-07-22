@@ -55,6 +55,7 @@ export default function SeatsPage({success, setSuccess}) {
                     <SeatItem onClick={() => selecionar(s.id, selecionados, setSelecionados, s.isAvailable, nameSelecionados, setNameSelecionados, s.name)}
                     isAvailable={s.isAvailable} 
                     isSelecionado={selecionados.includes(s.id)} 
+                    data-test="seat"
                     >
                         {s.name}
                     </SeatItem>
@@ -72,15 +73,15 @@ export default function SeatsPage({success, setSuccess}) {
 
             <FormContainer onSubmit={reservarAssentos}>
                 Nome do Comprador:
-                <input placeholder="Digite seu nome..." value={name} onChange={e => setName(e.target.value)} required />
+                <input data-test="client-name" placeholder="Digite seu nome..." value={name} onChange={e => setName(e.target.value)} required />
 
                 CPF do Comprador:
-                <input placeholder="Digite seu CPF..." value={cpf} onChange={e => setCpf(e.target.value)} required />
+                <input data-test="client-cpf" placeholder="Digite seu CPF..." value={cpf} onChange={e => setCpf(e.target.value)} required />
 
-                <button type="submit">Reservar Assento(s)</button>
+                <button data-test="book-seat-btn" type="submit">Reservar Assento(s)</button>
             </FormContainer>
 
-            <FooterContainer>
+            <FooterContainer data-test="footer">
                 <div>
                     <img src={sessao.movie.posterURL} alt="poster" />
                 </div>

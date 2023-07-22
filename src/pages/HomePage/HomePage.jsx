@@ -22,7 +22,7 @@ export default function HomePage() {
 
                 {movies.map((movie) =>
                     <Link to={`/sessoes/${movie.id}`}>
-                        <MovieContainer>
+                        <MovieContainer data-test="movie">
                             <img src={movie.posterURL}/>
                         </MovieContainer>
                     </Link>
